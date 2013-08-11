@@ -323,7 +323,7 @@ public class OpenVpnService extends VpnService implements StateListener, Callbac
         if (!mOvpn3) {
 
             // start a Thread that handles incoming messages of the managment socket
-            OpenVpnManagementThread ovpnManagementThread = new OpenVpnManagementThread(mProfile, this);
+            OpenConnectManagementThread ovpnManagementThread = new OpenConnectManagementThread(mProfile, this);
             if (ovpnManagementThread.openManagementInterface(this)) {
 
                 Thread mSocketManagerThread = new Thread(ovpnManagementThread, "OpenVPNManagementThread");
@@ -353,7 +353,7 @@ public class OpenVpnService extends VpnService implements StateListener, Callbac
         }
 
         mProcessThread = new Thread(processThread, "OpenVPNProcessThread");
-        mProcessThread.start();
+        //mProcessThread.start();
 
         if (mDeviceStateReceiver != null)
             unregisterDeviceStateReceiver();
